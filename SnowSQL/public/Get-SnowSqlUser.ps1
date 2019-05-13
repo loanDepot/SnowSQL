@@ -1,6 +1,7 @@
 function Get-SnowSqlUser
 {
-    [cmdletbinding()]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSShouldProcess", "", Justification="Implemented in Invoke-SnowSql")]
+    [cmdletbinding(SupportsShouldProcess)]
     param(
         # Return the command instead of the results
         [switch]

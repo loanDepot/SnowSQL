@@ -1,6 +1,7 @@
 function New-SnowSqlRole
 {
-    [cmdletbinding()]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSShouldProcess", "", Justification="Implemented in Invoke-SnowSql")]
+    [cmdletbinding(SupportsShouldProcess)]
     param(
         [parameter(
             Mandatory,

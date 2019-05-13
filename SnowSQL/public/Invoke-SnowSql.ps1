@@ -8,12 +8,12 @@ function Invoke-SnowSql
         [Parameter(ParameterSetName = 'QueryCred', Mandatory)]
         [Parameter(ParameterSetName = 'PathCred', Mandatory)]
         [string]
-        $Endpoint = "loandepot.east-us-2.azure",
+        $Endpoint,
 
         [Parameter(ParameterSetName = 'QueryCred', Mandatory)]
         [Parameter(ParameterSetName = 'PathCred', Mandatory)]
         [PSCredential]
-        $Credential = (Get-LDCredential 'SnowflakeUserAdmin_dv1'),
+        $Credential,
 
         [Parameter(ParameterSetName = 'QueryConnection')]
         [Parameter(ParameterSetName = 'PathConnection')]
