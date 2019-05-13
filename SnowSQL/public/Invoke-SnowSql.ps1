@@ -40,7 +40,7 @@ function Invoke-SnowSql
         }
         catch
         {
-            Write-Error "Could not find [snowsql.exe] on local system. Install snowsql.exe and make sure it is in the %path%. Install instructions can be found here [https://docs.snowflake.net/manuals/user-guide/snowsql-install-config.html]" -ErrorAction Stop
+            Write-Error "Could not find [snowsql.exe] on local system. Install snowsql.exe and make it available in the %path%. Install instructions can be found here [https://docs.snowflake.net/manuals/user-guide/snowsql-install-config.html]" -ErrorAction Stop
         }
 
         if($PSCmdlet.ParameterSetName -match 'Connection$')
