@@ -1,8 +1,23 @@
 function Get-SnowSqlRoleMember
 {
+    <#
+    .SYNOPSIS
+    Gets the members of the Snowflake role
+
+    .DESCRIPTION
+    Gets the members of the Snowflake role
+
+    .EXAMPLE
+    Get-SnowSqlRoleMember
+
+    .NOTES
+
+    #>
+
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSShouldProcess", "", Justification="Implemented in Invoke-SnowSql")]
     [cmdletbinding(SupportsShouldProcess)]
     param(
+        # Name of Role to update
         [parameter(
             Mandatory,
             ValueFromPipelineByPropertyName

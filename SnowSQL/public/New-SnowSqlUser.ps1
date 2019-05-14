@@ -1,8 +1,23 @@
 function New-SnowSqlUser
 {
+    <#
+    .SYNOPSIS
+    Create a new Snowflake user account
+
+    .DESCRIPTION
+    Create a new Snowflake user account
+
+    .EXAMPLE
+    New-SnowSqlUser -Name TESTUSER -LoginName TESTUSER@CONTOSO.COM -Description 'AD Account'
+
+    .NOTES
+    Current use case is for creating AD users in Snowflake. Local accounts may need different options.
+    #>
+
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSShouldProcess", "", Justification="Implemented in Invoke-SnowSql")]
     [cmdletbinding(SupportsShouldProcess)]
     param(
+        # Name of the Snowflake user
         [Alias('SamAccountName')]
         [parameter(
             Mandatory,
@@ -11,6 +26,7 @@ function New-SnowSqlUser
         [string]
         $Name,
 
+        # Login or Active Directory account name
         [Alias('UserPrincipalName')]
         [parameter(
             Mandatory,
@@ -19,6 +35,7 @@ function New-SnowSqlUser
         [string]
         $LoginName,
 
+        # Description of the user account
         [Alias('Comment')]
         [parameter(
             ValueFromPipelineByPropertyName

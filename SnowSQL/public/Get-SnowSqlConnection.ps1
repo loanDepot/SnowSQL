@@ -1,5 +1,23 @@
 function Get-SnowSqlConnection
 {
+    <#
+    .SYNOPSIS
+    Gets the current Snowflake connection
+
+    .DESCRIPTION
+    Gets the current Snowflake connection
+
+    .EXAMPLE
+    Get-SnowSqlConnection
+
+Endpoint                    Credential
+--------                    ----------
+contoso.east-us-2.azure     System.Management.Automation.PSCredential
+
+    .NOTES
+
+    #>
+
     [OutputType('SnowSql.Connection')]
     [CmdletBinding()]
     param()

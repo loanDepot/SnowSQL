@@ -1,8 +1,23 @@
 function Add-SnowSqlRoleMember
 {
+    <#
+    .SYNOPSIS
+    Add users to role
+
+    .DESCRIPTION
+    Add users to role
+
+    .EXAMPLE
+    Add-SnowSqlRoleMember -Role TEST_ROLE -Name TEST_USER
+
+    .NOTES
+
+    #>
+
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSShouldProcess", "", Justification="Implemented in Invoke-SnowSql")]
     [cmdletbinding(SupportsShouldProcess)]
     param(
+        # Name of Role to update
         [parameter(
             Mandatory,
             ValueFromPipelineByPropertyName
@@ -10,6 +25,7 @@ function Add-SnowSqlRoleMember
         [string]
         $Role,
 
+        # User to add to Role
         [Alias('Member')]
         [parameter(
             Mandatory,

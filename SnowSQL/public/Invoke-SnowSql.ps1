@@ -1,30 +1,50 @@
 function Invoke-SnowSql
 {
+    <#
+    .SYNOPSIS
+    Invokes a Snowflake SQL statement
+
+    .DESCRIPTION
+    Invokes a Snowflake SQL statement
+
+    .EXAMPLE
+    Open-SnowSqlConnection
+    Invoke-SnowSql -Query '!help'
+
+    .NOTES
+    Error handling does not exist at the moment
+    #>
+
     [cmdletbinding(
         DefaultParameterSetName = 'QueryConnection',
         SupportsShouldProcess
     )]
     param(
+        # Snowflake endpoint (ex: contoso.east-us-2.azure)
         [Parameter(ParameterSetName = 'QueryCred', Mandatory)]
         [Parameter(ParameterSetName = 'PathCred', Mandatory)]
         [string]
         $Endpoint,
 
+        # Credential for snowflake endpoint
         [Parameter(ParameterSetName = 'QueryCred', Mandatory)]
         [Parameter(ParameterSetName = 'PathCred', Mandatory)]
         [PSCredential]
         $Credential,
 
+        # An existing connection made with Open-SnowSqlConnection
         [Parameter(ParameterSetName = 'QueryConnection')]
         [Parameter(ParameterSetName = 'PathConnection')]
         [PSTypeName('SnowSql.Connection')]
         $Connection,
 
+        # Query to invoke
         [Parameter(ParameterSetName = 'QueryCred')]
         [Parameter(ParameterSetName = 'QueryConnection')]
         [string[]]
         $Query = '!help',
 
+        # SnowSql script file to execute
         [Parameter(ParameterSetName = 'PathCred')]
         [Parameter(ParameterSetName = 'PathConnection')]
         [string]

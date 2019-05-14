@@ -1,8 +1,23 @@
 function Remove-SnowSqlRoleMember
 {
+    <#
+    .SYNOPSIS
+    Remove Snowflake user from role
+
+    .DESCRIPTION
+    Remove Snowflake user from role
+
+    .EXAMPLE
+    Remove-SnowSqlRoleMember -Role TEST_ROLE -Name TEST_USER
+
+    .NOTES
+
+    #>
+
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSShouldProcess", "", Justification="Implemented in Invoke-SnowSql")]
     [cmdletbinding(SupportsShouldProcess)]
     param(
+        # Name of Role to update
         [parameter(
             Mandatory,
             ValueFromPipelineByPropertyName
@@ -10,6 +25,7 @@ function Remove-SnowSqlRoleMember
         [string]
         $Role,
 
+        # User to remove from role
         [Alias('Member')]
         [parameter(
             Mandatory,

@@ -1,11 +1,27 @@
 function Disable-SnowSqlUser
 {
+    <#
+    .SYNOPSIS
+    Disable user account
+
+    .DESCRIPTION
+    Disable user account
+
+    .EXAMPLE
+    Disable-SnowSqlUser -Name TEST_USER
+
+    .NOTES
+
+    #>
+
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSShouldProcess", "", Justification="Implemented in Invoke-SnowSql")]
     [cmdletbinding(SupportsShouldProcess)]
     param(
+        # Name of user to disable
         [Alias('SamAccountName')]
         [parameter(
             Mandatory,
+            Position = 0,
             ValueFromPipelineByPropertyName
         )]
         [string]

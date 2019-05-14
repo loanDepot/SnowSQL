@@ -1,15 +1,31 @@
 function Open-SnowSqlConnection
 {
+    <#
+    .SYNOPSIS
+    Opens a connection to Snowflake
+
+    .DESCRIPTION
+    Establishes a few important environment values for connecting to snowflake
+
+    .EXAMPLE
+    Open-SnowSqlConnection -Endpoint contoso.east-us-2.azure -Credential (Get-Credential)
+
+    .NOTES
+    Will also execute a '!help' statement to verify connectivity
+    #>
+
     [OutputType('SnowSql.Connection')]
     [CmdletBinding()]
     param(
-        #[Parameter(Mandatory)]
+        # Snowflake endpoint (ex: contoso.east-us-2.azure)
+        [Parameter(Mandatory)]
         [string]
-        $Endpoint = "loandepot.east-us-2.azure",
+        $Endpoint,
 
-        #[Parameter(Mandatory)]
+        # Credential for snowflake endpoint
+        [Parameter(Mandatory)]
         [PSCredential]
-        $Credential = (Get-LDCredential 'SnowflakeUserAdmin_dv1')
+        $Credential
     )
 
     end
