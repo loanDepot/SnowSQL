@@ -15,7 +15,8 @@ function Open-SnowSqlConnection
     #>
 
     [OutputType('SnowSql.Connection')]
-    [CmdletBinding()]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSShouldProcess", "", Justification="Implemented in Invoke-SnowSql")]
+    [cmdletbinding(SupportsShouldProcess)]
     param(
         # Snowflake endpoint (ex: contoso.east-us-2.azure)
         [Parameter(Mandatory)]
