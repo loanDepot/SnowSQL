@@ -5,7 +5,6 @@ param($Task = 'Default')
 $Script:Modules = @(
     'BuildHelpers',
     'InvokeBuild',
-    'LDModuleBuilder',
     'Pester',
     'platyPS',
     'PSScriptAnalyzer',
