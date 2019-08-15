@@ -84,7 +84,9 @@ function Invoke-SnowSql
         {
             $Path = New-TemporaryFile
             Write-Verbose "Saving query to file [$Path]"
-            $Query | Set-Content -Path $Path -Encoding UTF8
+
+            #Setting to UTF8 without BOM as snowsql commands for files with BOM fail
+            [System.IO.File]::WriteAllLines($Path, $Query)
         }
 
         $snowSqlParam = @(
