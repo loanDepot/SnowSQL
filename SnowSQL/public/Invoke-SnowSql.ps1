@@ -44,6 +44,12 @@ function Invoke-SnowSql
         [string[]]
         $Query = '!help',
 
+        # Timeout query
+        [Parameter(ParameterSetName = 'QueryCred')]
+        [Parameter(ParameterSetName = 'QueryConnection')]
+        [int]
+        $timeout = 10,
+
         # SnowSql script file to execute
         [Parameter(ParameterSetName = 'PathCred')]
         [Parameter(ParameterSetName = 'PathConnection')]
@@ -56,16 +62,16 @@ function Invoke-SnowSql
         try
         {
             $snowSql = Get-Command snowsql -ErrorAction Stop |
-                Select-Object -First 1 -ExpandProperty Source
+            Select-Object -First 1 -ExpandProperty Source
         }
         catch
         {
             Write-Error "Could not find [snowsql.exe] on local system. Install snowsql.exe and make it available in the %path%. Install instructions can be found here [https://docs.snowflake.net/manuals/user-guide/snowsql-install-config.html]" -ErrorAction Stop
         }
 
-        if($PSCmdlet.ParameterSetName -match 'Connection$')
+        if ($PSCmdlet.ParameterSetName -match 'Connection$')
         {
-            if( -not $Connection )
+            if ( -not $Connection )
             {
                 $Connection = Get-SnowSqlConnection
             }
@@ -100,6 +106,10 @@ function Invoke-SnowSql
             {
                 '--option', 'log_level=DEBUG'
             }
+            if ($timeout)
+            {
+                '--option', $('login_timeout=' + $timeout)
+            }
             if ($Path)
             {
                 '--filename', $Path
@@ -113,8 +123,15 @@ function Invoke-SnowSql
         Write-Debug ("Executing [& '$snowsql' $snowSqlParam]" -f $snowsql)
         if ($PSCmdlet.ShouldProcess("Execute SnowSql on [$Endpoint] as [$($Credential.UserName)]. Use -Debug to see full command"))
         {
-            $env:SNOWSQL_PWD = $Credential.GetNetworkCredential().password
-            $results = & $snowsql @snowSqlParam | ConvertFrom-Csv
+            $env:SNOWSQL_PWD = $Credential.GetNetworkCredential().Password
+            try
+            {
+                $results = & $snowsql @snowSqlParam | ConvertFrom-Csv
+            }
+            catch
+            {
+                $results = $null
+            }
             $env:SNOWSQL_PWD = ""
             Write-Verbose "LastExitCode[$LastExitCode]"
         }

@@ -13,7 +13,7 @@ Opens a connection to Snowflake
 ## SYNTAX
 
 ```
-Open-SnowSqlConnection [-Endpoint] <String> [-Credential] <PSCredential> [-WhatIf] [-Confirm]
+Open-SnowSqlConnection [-Endpoint] <String> [-Credential] <PSCredential> [-Timeout] <Int> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -25,6 +25,11 @@ Establishes a few important environment values for connecting to snowflake
 ### EXAMPLE 1
 ```
 Open-SnowSqlConnection -Endpoint contoso.east-us-2.azure -Credential (Get-Credential)
+```
+
+### EXAMPLE 2
+```
+Open-SnowSqlConnection -Endpoint contoso.east-us-2.azure -Credential (Get-Credential) -Timeout 20
 ```
 
 ## PARAMETERS
@@ -55,6 +60,21 @@ Aliases:
 Required: True
 Position: 1
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Timeout
+Snowflake timeout for connexion
+
+```yaml
+Type: Integer
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 2
+Default value: 10
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
