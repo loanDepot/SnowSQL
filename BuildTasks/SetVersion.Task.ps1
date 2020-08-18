@@ -50,7 +50,7 @@ task SetVersion {
     "Checking for published version"
     $publishedModule = Find-Module -Name $ModuleName -ErrorAction 'Ignore' |
         Sort-Object -Property {[version]$_.Version} -Descending |
-        Select -First 1
+        Select-Object -First 1
 
     if($null -ne $publishedModule)
     {
