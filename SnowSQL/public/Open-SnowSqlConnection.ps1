@@ -32,7 +32,7 @@ function Open-SnowSqlConnection
         [int]
         $Timeout = 10
     )
-    begging
+    begin
     {
         if ($Endpoint -match '(http[s]?)(:\/\/)([^\s,]+)')
         {
@@ -55,13 +55,21 @@ function Open-SnowSqlConnection
             Connection  = $SnowSqlConnection
             timeout     = $Timeout
         }
-        $Result = Invoke-SnowSql @invokeSnowSqlSplat
+        if ($PSCmdlet.ShouldProcess("Execute SnowSql query [$($invokeSnowSqlSplat.query)] on [$Endpoint] as [$($Credential.UserName)]. Use -Debug to see full command"))
+        {
+            $Result = Invoke-SnowSql @invokeSnowSqlSplat
+        }
+        else
+        {
+            $Result = $true
+        }
         if (-not $Result)
         {
             Write-Error ("Unable to connect to SnowSql endpoint {0}" -f $Endpoint) -ErrorAction Stop
         }
         else
         {
+            $Script:SnowSqlConnection = $SnowSqlConnection
             return $Script:SnowSqlConnection
         }
     }
