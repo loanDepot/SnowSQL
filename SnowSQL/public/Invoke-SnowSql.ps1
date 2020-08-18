@@ -44,11 +44,11 @@ function Invoke-SnowSql
         [string[]]
         $Query = '!help',
 
-        # Timeout query
+        # Login timeout in seconds
         [Parameter(ParameterSetName = 'QueryCred')]
         [Parameter(ParameterSetName = 'QueryConnection')]
         [int]
-        $timeout = 10,
+        $Timeout = 10,
 
         # SnowSql script file to execute
         [Parameter(ParameterSetName = 'PathCred')]

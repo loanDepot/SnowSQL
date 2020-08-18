@@ -28,7 +28,7 @@ function Open-SnowSqlConnection
         [PSCredential]
         $Credential,
 
-        # Timeout connexion
+        # Login timeout in seconds
         [int]
         $Timeout = 10
     )

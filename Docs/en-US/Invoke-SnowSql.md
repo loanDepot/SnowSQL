@@ -14,7 +14,8 @@ Invokes a Snowflake SQL statement
 
 ### QueryConnection (Default)
 ```
-Invoke-SnowSql [-Connection <Object>] [-Query <String[]>] [-Timeout <Int>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-SnowSql [-Connection <Object>] [-Query <String[]>] [-Timeout <Int32>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### PathCred
@@ -25,8 +26,8 @@ Invoke-SnowSql -Endpoint <String> -Credential <PSCredential> [-Path <String>] [-
 
 ### QueryCred
 ```
-Invoke-SnowSql -Endpoint <String> -Credential <PSCredential> [-Query <String[]>] [-Timeout <Int>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Invoke-SnowSql -Endpoint <String> -Credential <PSCredential> [-Query <String[]>] [-Timeout <Int32>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### PathConnection
@@ -39,7 +40,7 @@ Invokes a Snowflake SQL statement
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### EXEMPLE 1
 ```
 Open-SnowSqlConnection
 ```
@@ -124,15 +125,15 @@ Accept wildcard characters: False
 ```
 
 ### -Timeout
-Snowflake timeout for connexion
+Login timeout in seconds
 
 ```yaml
-Type: Integer
-Parameter Sets: (All)
+Type: Int32
+Parameter Sets: QueryConnection, QueryCred
 Aliases:
 
 Required: False
-Position: 2
+Position: Named
 Default value: 10
 Accept pipeline input: False
 Accept wildcard characters: False
