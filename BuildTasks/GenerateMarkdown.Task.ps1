@@ -27,6 +27,7 @@ task GenerateMarkdown {
             Module                = $ModuleName
             OutputFolder          = "$DocsPath\en-US"
             WithModulePage        = $true
+            Force                 = $true
         }
 
         # ErrorAction is set to SilentlyContinue so this

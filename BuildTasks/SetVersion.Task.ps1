@@ -1,7 +1,7 @@
 function GetModulePublicInterfaceMap
 {
     param($Path)
-    $module = ImportModule -Path $Path -PassThru
+    $module = Import-BuildModule -Path $Path -PassThru
     $exportedCommands = @(
         $module.ExportedFunctions.values
         $module.ExportedCmdlets.values

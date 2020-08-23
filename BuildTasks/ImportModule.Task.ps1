@@ -1,4 +1,4 @@
-function ImportModule
+function Import-BuildModule
 {
     param(
         [string]$path,
@@ -29,5 +29,5 @@ function ImportModule
 }
 
 task ImportModule {
-    ImportModule -Path $ManifestPath
+    Import-BuildModule -Path $ManifestPath
 }

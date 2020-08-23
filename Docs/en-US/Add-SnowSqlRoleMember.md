@@ -21,7 +21,7 @@ Add users to role
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### EXEMPLE 1
 ```
 Add-SnowSqlRoleMember -Role TEST_ROLE -Name TEST_USER
 ```

@@ -22,6 +22,8 @@ Write-Verbose "  ModulePath [$ModulePath]" -Verbose
 $Script:Folders = 'Classes', 'Includes', 'Internal', 'Private', 'Public', 'Resources'
 Write-Verbose "  Folders [$Folders]" -Verbose
 
+$timestamp = Get-Date -Format o | ForEach-Object { $_ -replace ":", "." }
+$PSVersion = $PSVersionTable.PSVersion.ToString()
 $Script:TestFile = "$BuildRoot\Output\TestResults_PS$PSVersion`_$TimeStamp.xml"
 Write-Verbose "  TestFile [$TestFile]" -Verbose
 

@@ -21,7 +21,7 @@ Disable user account
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### EXEMPLE 1
 ```
 Disable-SnowSqlUser -Name TEST_USER
 ```

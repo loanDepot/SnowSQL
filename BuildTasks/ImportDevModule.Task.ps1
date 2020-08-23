@@ -1,4 +1,4 @@
 
 task ImportDevModule {
-    ImportModule -Path "$Source\$ModuleName.psd1" -Force
+    Import-BuildModule -Path "$Source\$ModuleName.psd1" -Force
 }
