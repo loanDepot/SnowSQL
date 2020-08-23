@@ -20,12 +20,12 @@ Describe "Public commands have comment-based or external help" -Tags 'Build' {
                 $node.Examples | Should -Not -BeNullOrEmpty
                 $node.Examples | Out-String | Should -Match ($node.Name)
             }
-            foreach ($par in $node.Parameters.Parameter)
+            foreach ($parameter in $node.Parameters.Parameter)
             {
-                if ($par -notmatch 'WhatIf|Confirm')
+                if ($parameter -notmatch 'WhatIf|Confirm')
                 {
-                    It "Should have a Description for Parameter [$($par.Name)]" {
-                        $par.Description[0].Text.length | Should -BeGreaterOrEqual 1
+                    It "Should have a Description for Parameter [$($parameter.Name)]" {
+                        $parameter.Description[0].Text.length | Should -BeGreaterOrEqual 1
                     }
                 }
             }
