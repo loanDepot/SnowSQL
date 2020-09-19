@@ -62,7 +62,7 @@ function Invoke-SnowSql
         try
         {
             $snowSql = Get-Command snowsql -ErrorAction Stop |
-            Select-Object -First 1 -ExpandProperty Source
+                Select-Object -First 1 -ExpandProperty Source
         }
         catch
         {

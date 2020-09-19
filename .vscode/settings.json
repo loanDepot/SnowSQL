@@ -13,6 +13,7 @@
   //-------- PowerShell configuration --------
   "powershell.codeFormatting.alignPropertyValuePairs": true,
   "powershell.codeFormatting.preset": "Allman",
+  "powershell.codeFormatting.pipelineIndentationStyle": "IncreaseIndentationAfterEveryPipeline",
   "powershell.scriptAnalysis.settingsPath": "./ScriptAnalyzerSettings.psd1",
   //-------- Language configuration --------
   "[json]": {
@@ -28,6 +29,14 @@
     "titleBar.inactiveForeground": "#e7e7e799",
     "statusBar.background": "#2ba66c",
     "statusBarItem.hoverBackground": "#38cc86",
-    "statusBar.foreground": "#e7e7e7"
-  }
+    "statusBar.foreground": "#e7e7e7",
+    "activityBar.activeBackground": "#38cc86",
+    "activityBar.activeBorder": "#934dd1",
+    "activityBar.background": "#38cc86",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#934dd1",
+    "activityBarBadge.foreground": "#e7e7e7"
+  },
+  "peacock.color": "#2ba66c"
 }
