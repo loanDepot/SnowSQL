@@ -63,12 +63,9 @@ function Open-SnowSqlConnection
         {
             $Result = $true
         }
-        if (-not $Result)
+        if ($Result)
         {
-            Write-Error ("Unable to connect to SnowSql endpoint {0}" -f $Endpoint) -ErrorAction Stop
-        }
-        else
-        {
+            Write-Debug ("Success to connect to SnowSql endpoint {0}" -f $Endpoint)
             $Script:SnowSqlConnection = $SnowSqlConnection
             return $Script:SnowSqlConnection
         }

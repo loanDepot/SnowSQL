@@ -13,7 +13,7 @@ Describe "Public commands have comment-based or external help" -Tags 'Build' {
     {
         Context $node.Name {
             It "Should have a Description or Synopsis" {
-                ($node.Description + $node.Synopsis) | Should -Not -BeNullOrEmpty
+                $node.Synopsis.Length + $node.Description.Text.Length | Should -BeGreaterOrEqual 1
             }
 
             It "Should have an Example" {

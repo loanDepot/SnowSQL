@@ -120,22 +120,23 @@ function Invoke-SnowSql
             }
         )
 
+        $results = $null
         Write-Debug ("Executing [& '$snowsql' $snowSqlParam]" -f $snowsql)
         if ($PSCmdlet.ShouldProcess("Execute SnowSql on [$Endpoint] as [$($Credential.UserName)]. Use -Debug to see full command"))
         {
             $env:SNOWSQL_PWD = $Credential.GetNetworkCredential().Password
             try
             {
-                $results = & $snowsql @snowSqlParam | ConvertFrom-Csv
+                $executeQuery = & $snowsql @snowSqlParam 2>&1
+                $results = $executeQuery | ConvertFrom-Csv
             }
             catch
             {
-                $results = $null
+                Write-Error ("An error occurred while executing a request [{0}]. Use -Debug to see full command" -f $_)
             }
             $env:SNOWSQL_PWD = ""
             Write-Verbose "LastExitCode[$LastExitCode]"
         }
-
         $results
     }
 }
