@@ -21,7 +21,7 @@ Gets the members of the Snowflake role
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### EXEMPLE 1
 ```
 Get-SnowSqlRoleMember
 ```

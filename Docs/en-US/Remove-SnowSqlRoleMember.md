@@ -21,7 +21,7 @@ Remove Snowflake user from role
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### EXEMPLE 1
 ```
 Remove-SnowSqlRoleMember -Role TEST_ROLE -Name TEST_USER
 ```

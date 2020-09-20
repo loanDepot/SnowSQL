@@ -21,7 +21,7 @@ Enable user account
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### EXEMPLE 1
 ```
 Enable-SnowSqlUser -Name TEST_USER
 ```

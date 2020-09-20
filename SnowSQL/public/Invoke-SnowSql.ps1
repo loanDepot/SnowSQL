@@ -44,6 +44,12 @@ function Invoke-SnowSql
         [string[]]
         $Query = '!help',
 
+        # Login timeout in seconds
+        [Parameter(ParameterSetName = 'QueryCred')]
+        [Parameter(ParameterSetName = 'QueryConnection')]
+        [int]
+        $Timeout = 10,
+
         # SnowSql script file to execute
         [Parameter(ParameterSetName = 'PathCred')]
         [Parameter(ParameterSetName = 'PathConnection')]
@@ -63,9 +69,9 @@ function Invoke-SnowSql
             Write-Error "Could not find [snowsql.exe] on local system. Install snowsql.exe and make it available in the %path%. Install instructions can be found here [https://docs.snowflake.net/manuals/user-guide/snowsql-install-config.html]" -ErrorAction Stop
         }
 
-        if($PSCmdlet.ParameterSetName -match 'Connection$')
+        if ($PSCmdlet.ParameterSetName -match 'Connection$')
         {
-            if( -not $Connection )
+            if ( -not $Connection )
             {
                 $Connection = Get-SnowSqlConnection
             }
@@ -100,6 +106,10 @@ function Invoke-SnowSql
             {
                 '--option', 'log_level=DEBUG'
             }
+            if ($timeout)
+            {
+                '--option', $('login_timeout=' + $timeout)
+            }
             if ($Path)
             {
                 '--filename', $Path
@@ -110,15 +120,23 @@ function Invoke-SnowSql
             }
         )
 
+        $results = $null
         Write-Debug ("Executing [& '$snowsql' $snowSqlParam]" -f $snowsql)
         if ($PSCmdlet.ShouldProcess("Execute SnowSql on [$Endpoint] as [$($Credential.UserName)]. Use -Debug to see full command"))
         {
-            $env:SNOWSQL_PWD = $Credential.GetNetworkCredential().password
-            $results = & $snowsql @snowSqlParam | ConvertFrom-Csv
+            $env:SNOWSQL_PWD = $Credential.GetNetworkCredential().Password
+            try
+            {
+                $executeQuery = & $snowsql @snowSqlParam 2>&1
+                $results = $executeQuery | ConvertFrom-Csv
+            }
+            catch
+            {
+                Write-Error ("An error occurred while executing a request [{0}]. Use -Debug to see full command" -f $_)
+            }
             $env:SNOWSQL_PWD = ""
             Write-Verbose "LastExitCode[$LastExitCode]"
         }
-
         $results
     }
 }

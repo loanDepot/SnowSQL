@@ -21,7 +21,7 @@ Gets the current Snowflake connection
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### EXEMPLE 1
 ```
 Get-SnowSqlConnection
 ```

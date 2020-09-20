@@ -21,7 +21,7 @@ Get list of Snowflake roles
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### EXEMPLE 1
 ```
 Get-SnowSqlRole
 ```

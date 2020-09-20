@@ -13,8 +13,8 @@ Opens a connection to Snowflake
 ## SYNTAX
 
 ```
-Open-SnowSqlConnection [-Endpoint] <String> [-Credential] <PSCredential> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Open-SnowSqlConnection [-Endpoint] <String> [-Credential] <PSCredential> [[-Timeout] <Int32>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,7 +22,7 @@ Establishes a few important environment values for connecting to snowflake
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### EXEMPLE 1
 ```
 Open-SnowSqlConnection -Endpoint contoso.east-us-2.azure -Credential (Get-Credential)
 ```
@@ -59,6 +59,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Timeout
+Login timeout in seconds
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
+Default value: 10
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -75,7 +90,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter

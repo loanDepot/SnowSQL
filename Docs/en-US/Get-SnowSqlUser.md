@@ -21,7 +21,7 @@ Get list of Snowflake users
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### EXEMPLE 1
 ```
 Get-SnowSqlUser
 ```

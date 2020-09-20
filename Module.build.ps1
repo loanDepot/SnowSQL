@@ -10,6 +10,6 @@ task Publish Build, PublishVersion, Helpify, Test, PublishModule
 task TFS Clean, Build, PublishVersion, Helpify, Test
 task DevTest ImportDevModule, Pester
 
-Write-Host 'Import common tasks'
+Write-Information 'Import common tasks'
 Get-ChildItem -Path $buildroot\BuildTasks\*.Task.ps1 |
-    ForEach-Object {Write-Host $_.FullName;. $_.FullName}
+    ForEach-Object {Write-Information  $_.FullName;. $_.FullName}

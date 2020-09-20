@@ -29,7 +29,7 @@ foreach($file in $classFiles)
     }
 }
 
-$importOrder = $classes.GetEnumerator() | 
+$importOrder = $classes.GetEnumerator() |
     Resolve-DependencyOrder -Key {$_.Name} -DependsOn {$_.Value.Base}
 
 foreach( $class in $importOrder )

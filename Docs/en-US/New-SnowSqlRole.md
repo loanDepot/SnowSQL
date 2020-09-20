@@ -21,7 +21,7 @@ Create a new Snowflake role
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### EXEMPLE 1
 ```
 New-SnowSqlRole -Role TEST_ROLE
 ```
